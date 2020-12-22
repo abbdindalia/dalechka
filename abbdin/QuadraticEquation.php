@@ -17,7 +17,7 @@ class QuadraticEquation extends LinearEquation implements EquationInterface{
 
         $d = $this -> discriminant($a, $b, $c);
 
-        MyLog::Instance()::log("It is a quad equation.\n\r");
+        MyLog::log("It is a quad equation.\n\r");
         if ($d == 0) {
             return $this -> x = [(-$b) / (2 * $a)];
         }

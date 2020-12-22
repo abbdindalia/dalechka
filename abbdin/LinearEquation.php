@@ -11,7 +11,7 @@ class LinearEquation
         if ($a == 0) {
             throw new AbbdinException('Division by zero');
         }
-        MyLog::Instance()::log("It is a linear equation.\n\r");
+        MyLog::log("It is a linear equation.\n\r");
         return $this->x = [(-$b) / $a];
     }
 }

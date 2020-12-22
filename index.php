@@ -13,24 +13,24 @@ require "abbdin/QuadraticEquation.php";
 require "abbdin/AbbdinException.php";
 
 $solver = new abbdin\QuadraticEquation();
-$logger = abbdin\MyLog::Instance();
 
 try {
+    abbdin\MyLog::log("Version: " . trim(file_get_contents("version")) . ".\n");
     echo "Enter 3 numbers: a, b, c.\n\r";
 
     $a = readline("Enter a: \n\r");
     $b = readline("Enter b: \n\r");
     $c = readline("Enter c: \n\r");
 
-    $logger::log("Equation is "."x=".$a."x2+".$b."x+".$c."\n\r");
+    abbdin\MyLog::log("Equation is "."x=".$a."x2+".$b."x+".$c.".\n\r");
 
     $result = $solver->solve($a, $b, $c);
     $str = implode("; ", $result);
 
-    $logger::log("Equation roots: ".$str."\n\r");
+    abbdin\MyLog::log("Equation roots: ".$str."\n\r");
 } catch (abbdin\AbbdinException $err) {
     $message = $err->getMessage();
-    $logger::log($message);
+    abbdin\MyLog::log($message);
 }
 
 abbdin\MyLog::write();
