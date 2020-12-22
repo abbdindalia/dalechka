@@ -1,22 +1,36 @@
 <?php
 
-require 'core/EquationInterface.php';
-require 'core/LogInterface.php';
-require 'core/LogAbstract.php';
+ini_set("display_errors", 1);
+error_reporting(-1);
 
-require 'abbdin/LinearEquation.php';
-require 'abbdin/QuadraticEquation.php';
-require 'abbdin/MyLog.php';
+require "core/EquationInterface.php";
+require "core/LogAbstract.php";
+require "core/LogInterface.php";
 
-$equation = new abbdin\QuadraticEquation();
-try
-{
-    $result = $equation->solve(4, 44, 4);
+require "abbdin/MyLog.php";
+require "abbdin/LinearEquation.php";
+require "abbdin/QuadraticEquation.php";
+require "abbdin/AbbdinException.php";
+
+$solver = new abbdin\QuadraticEquation();
+$logger = abbdin\MyLog::Instance();
+
+try {
+    echo "Enter 3 numbers: a, b, c.\n\r";
+
+    $a = readline("Enter a: \n\r");
+    $b = readline("Enter b: \n\r");
+    $c = readline("Enter c: \n\r");
+
+    $logger::log("Equation is "."x=".$a."x2+".$b."x+".$c."\n\r");
+
+    $result = $solver->solve($a, $b, $c);
     $str = implode("; ", $result);
-    abbdin\MyLog::Instance()::log($str);
+
+    $logger::log("Equation roots: ".$str."\n\r");
+} catch (abbdin\AbbdinException $err) {
+    $message = $err->getMessage();
+    $logger::log($message);
 }
-catch (Error $error)
-{
-    abbdin\MyLog::Instance()::log($error->getMessage());
-}
+
 abbdin\MyLog::write();

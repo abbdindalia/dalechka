@@ -1,6 +1,7 @@
 <?php
 
 namespace abbdin;
+
 use core\EquationInterface;
 
 class QuadraticEquation extends LinearEquation implements EquationInterface{
@@ -16,12 +17,13 @@ class QuadraticEquation extends LinearEquation implements EquationInterface{
 
         $d = $this -> discriminant($a, $b, $c);
 
+        MyLog::Instance()::log("It is a quad equation.\n\r");
         if ($d == 0) {
             return $this -> x = [(-$b) / (2 * $a)];
         }
 
         if ($d < 0) {
-            throw new \Error('It is impossible to solve the quadratic equation');
+            throw new AbbdinException('It is impossible to solve the quadratic equation');
         }
         return $this -> x = [((-$b) - sqrt($d)) / (2 * $a), ((-$b) + sqrt($d)) / (2 * $a)];
     }

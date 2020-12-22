@@ -9,8 +9,9 @@ class LinearEquation
     public function LinearEquation($a, $b)
     {
         if ($a == 0) {
-            throw new \Error('Division by zero');
+            throw new AbbdinException('Division by zero');
         }
+        MyLog::Instance()::log("It is a linear equation.\n\r");
         return $this->x = [(-$b) / $a];
     }
 }
