@@ -1,0 +1,23 @@
+{
+  "name": "abbdindalia/dalechka",
+  "type": "project",
+  "license": "MIT",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/abbdindalia/dalechka-lib.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/rok9ru/trpo-core.git"
+    }
+  ],
+  "require": {
+    "abbdindalia/dalechka-lib": "^1.0"
+  },
+    "scripts": {
+    "post-install-cmd": [
+        "git symbolic-ref --short -q HEAD>version"
+    ]
+}
+}

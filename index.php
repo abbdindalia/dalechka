@@ -3,14 +3,7 @@
 ini_set("display_errors", 1);
 error_reporting(-1);
 
-require "core/EquationInterface.php";
-require "core/LogAbstract.php";
-require "core/LogInterface.php";
-
-require "abbdin/MyLog.php";
-require "abbdin/LinearEquation.php";
-require "abbdin/QuadraticEquation.php";
-require "abbdin/AbbdinException.php";
+require "vendor/autoload.php";
 
 $solver = new abbdin\QuadraticEquation();
 
